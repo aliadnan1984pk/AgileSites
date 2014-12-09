@@ -47,7 +47,7 @@ object AgileSitesBuild extends Build with AgileSitesSupport {
   // configuring WCS jars as unmanaged lib from sites directory
   val unmanagedFilter = "log4j-*" || "slf4j*" || "spring-*" || "commons-*" || "http-*" || "jsoup*" || "cs-*" ||
     "wem-sso-api-*" || "rest-api-*" || "cas-client-*" || "assetapi*" || "xstream*" ||
-    "ics.jar" || "cs.jar" || "xcelerate.jar" || "gator.jar" || "visitor.jar" || "ehcache-*" || "sites-*" || "esapi-*"
+    "ics.jar" || "cs.jar" || "xcelerate.jar" || "gator.jar" || "visitor.jar" || "ehcache-*" || "sites-*" || "esapi-*" || "gatorbulk*"
 
   /// END CHANGES
   val v = "1.8.1"
