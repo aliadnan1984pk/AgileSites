@@ -157,6 +157,7 @@ object AgileSitesBuild extends Build with AgileSitesSupport {
         wcsUpdateAssetsTask,
         wcsLogTask,
         wcsServeTask,
+        wcsBulkLoaderTask,
         excludedJars in assembly <<= (fullClasspath in assembly),
         watchSources ++= ((file("app") / "src" / "main" / "static" ** "*").get),
         EclipseKeys.projectFlavor := EclipseProjectFlavor.Scala,

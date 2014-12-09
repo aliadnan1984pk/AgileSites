@@ -218,6 +218,20 @@ trait AgileSitesSupport extends AgileSitesUtil {
       }
   }
 
+lazy val wcsBulkLoader = InputKey[Unit]("wcs-load", "WCS Bulk Loader")
+val wcsBulkLoaderTask = wcsBulkLoader <<= inputTask {
+    (argsTask: TaskKey[Seq[String]]) =>
+      (argsTask, fullClasspath in Compile, streams) map {
+        (args,  classpath, s) =>
+          val cp = classpath.files.mkString(java.io.File.pathSeparator)
+          //println(classpath.files.map(_.getName).mkString("\n"))
+          val cmd = Seq("-cp", cp, "com.openmarket.gatorbulk.objects.BulkLoader")++args
+          //println(cmd.mkString("\n"))
+          Fork.java(None, cmd ++ args, Some(new java.io.File(".")), s.log)        
+      }
+  }
+
+
   lazy val wcsCatalogManager = InputKey[Unit]("wcs-cm", "WCS Catalog Manager")
   val wcsCatalogManagerTask = wcsCatalogManager <<= inputTask {
     (argsTask: TaskKey[Seq[String]]) =>
